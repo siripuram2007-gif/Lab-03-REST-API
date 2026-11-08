@@ -302,11 +302,4 @@ Each request contains the information needed to process it. The server does not 
 
 In this lab, I developed a RESTful Books API using Node.js, Express.js and SQLite. I implemented GET, POST, PUT and DELETE operations. I also added search, sorting, pagination and price-range filtering using query parameters. Input validation and correct HTTP status codes help the API handle invalid requests and missing records. I tested the API using Thunder Client and documented the test cases with screenshots. This lab helped me understand REST API development, database operations, validation and debugging.
 
-## 15. Submission Checklist
 
-- [ ] Add your registration number and section in Student Details.
-- [ ] Confirm that all screenshot files are present in `screenshots/`.
-- [ ] Test all API endpoints.
-- [ ] Add your deployed public URL, or explain why deployment was not possible.
-- [ ] Push the `lab-03/` folder to your course GitHub repository.
-- [ ] Do not upload `.env`, `node_modules/` or local database files.
