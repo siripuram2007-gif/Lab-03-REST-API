@@ -1,0 +1,134 @@
+{
+  "info": {
+    "name": "Lab 3 - Books REST API",
+    "description": "Success and failure test cases for Lab 3.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "bookId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "GET all books",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books"
+      }
+    },
+    {
+      "name": "GET search, sort, pagination and price range",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books?search_q=database&order_by=price&order=ASC&limit=5&offset=0&min_price=100&max_price=900"
+      }
+    },
+    {
+      "name": "GET one book",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books/{{bookId}}"
+      }
+    },
+    {
+      "name": "GET invalid ID (400)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books/abc"
+      }
+    },
+    {
+      "name": "GET missing book (404)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books/99999"
+      }
+    },
+    {
+      "name": "POST create book (201)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Learning Node.js\",\n  \"author\": \"Alex Smith\",\n  \"price\": 499\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/books"
+      }
+    },
+    {
+      "name": "POST invalid body (400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"\",\n  \"author\": \"Alex Smith\",\n  \"price\": \"not-a-number\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/books"
+      }
+    },
+    {
+      "name": "PUT update book (200)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated Book Title\",\n  \"author\": \"Alex Smith\",\n  \"price\": 550\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/books/{{bookId}}"
+      }
+    },
+    {
+      "name": "DELETE book (200)",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/books/{{bookId}}"
+      }
+    },
+    {
+      "name": "GET invalid sort direction (400)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books?order=SIDEWAYS"
+      }
+    }
+  ]
+}
